@@ -1,0 +1,11 @@
+body { 
+    font-family: sans-serif; padding: 1em; 
+}
+
+input { 
+    width: 60px;
+}
+
+table { 
+    /* border: 1px solid black; border-collapse: collapse; padding: 5px;  */
+}
