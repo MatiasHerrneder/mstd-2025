@@ -119,27 +119,37 @@ function criterioMaximax(matriz) {
     return { mejor, accion: index + 1, detalle: maximos };
 }
 
-// function criterioLaplace(matriz) {
-//     const promedios = matriz.map(fila => {
-//         const suma = fila.reduce((a, b) => a + b, 0);
-//         return suma / fila.length;
-//     });
-//     const mejor = Math.max(...promedios);
-//     const index = promedios.indexOf(mejor);
-//     return { mejor, accion: index + 1, detalle: promedios };
-// }
-
 function criterioHurwicz(matriz, w) {
-    console.log(w)
     const hw = matriz.map(fila => w * Math.max(...fila) + (1 - w) * Math.min(...fila));
-    console.log(hw)
     const mejor = Math.max(...hw);
     const index = hw.indexOf(mejor);
     return { mejor, accion: index + 1, detalle: hw };
 }
 
-function criterioSavage() {
+function criterioSavage(matriz) {
+    // Lista con maximo por cada columna
+    const maximos_col = [...matriz[0]]
+    for (let col = 0; col < matriz[0].length; col++) {
+        for (let fila = 0; fila < matriz.length; fila++) {
+            if (matriz[fila][col] > maximos_col[col]) {
+                maximos_col[col] = matriz[fila][col]
+            }
+        }
+    }
+    // Creo matriz arrepentimientos
+    const arrepentimientos = Array(matriz.length).fill().map(() => Array(matriz[0].length).fill(0))
+    for (let fila = 0; fila < matriz[0].length; fila++) {
+        for (let col = 0; col < matriz.length; col++) {
+            arrepentimientos[fila][col] = Math.abs(maximos_col[col] - matriz[fila][col]) 
+        }
+    }
+    console.log(arrepentimientos)
     
+    const minimos = arrepentimientos.map(fila => Math.min(...fila));
+    const mejor = Math.max(...minimos);
+    const index = minimos.indexOf(mejor);
+    return { mejor, accion: index + 1, detalle: minimos };
+
 }
 
 function criterioValorEsperado(matriz, probs) {
@@ -165,11 +175,11 @@ function resolver() {
         case "maximax":
             resultado = criterioMaximax(matriz);
             break;
-        // case "laplace":
-        //     resultado = criterioLaplace(matriz);
-        //     break;
         case "hurwicz":
             resultado = criterioHurwicz(matriz, w);
+            break;
+        case "savage":
+            resultado = criterioSavage(matriz);
             break;
         case "valorEsperado":
             resultado = criterioValorEsperado(matriz, probs);
