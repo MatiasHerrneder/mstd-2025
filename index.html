@@ -6,32 +6,47 @@
   <title>Teoría de la Decisión</title>
   <link rel="stylesheet" href="styles.css">
   <script src="app.js" defer></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap" rel="stylesheet">
 </head>
 <body>
-  <h1>Teoría de la Decisión</h1>
-  <div>
-    <label>Acciones: <input type="number" id="rows" value="2" min="1" onchange="generarMatriz()"></label>
-    <label>Estados de la naturaleza: <input type="number" id="cols" value="2" min="1" onchange="generarMatriz()"></label>
-  </div>
 
-  <h2>Matriz de beneficios</h2>
-  <div id="matrizContainer"></div>
+  <section>
+    <h1>Teoría de la Decisión</h1>
+    <div>
+      <label>Acciones: <input type="number" id="rows" value="2" min="1" onchange="generarMatriz()"></label>
+      <label>Estados de la naturaleza: <input type="number" id="cols" value="2" min="1" onchange="generarMatriz()"></label>
+    </div>
+  </section>
 
-  <h3>Probabilidades (para valor esperado)</h3>
-  <div id="probContainer"></div>
+  <section>
+    <h2>Matriz de beneficios</h2>
+    <div id="matrizContainer"></div>
+  </section>
 
-  <h3>Seleccioná un criterio:</h3>
-  <select id="criterio" onchange="cambiarCriterio(this)">
-    <option value="wald">Wald (pesimista)</option>
-    <option value="maximax">Maximax (optimista)</option>
-    <option value="hurwicz">Hurwicz</option>
-    <option value="savage">Savage</option>
-    <option value="valorEsperado">Valor Esperado</option>
-  </select>
-  <label id="hw-value" for="hw" style="display: none;">w: <input type="number" name="hw" id="hw" value="0.5" min="0" max="1" step="0.1"></label>
-  <button onclick="resolver()">Resolver</button>
+  <section>
+    <h3>Probabilidades (para valor esperado)</h3>
+    <div id="probContainer"></div>
+  </section>
 
-  <h3>Resultado</h3>
-  <div id="resultado"></div>
+  </section>
+    <h3>Seleccioná un criterio:</h3>
+    <select id="criterio" onchange="cambiarCriterio(this)">
+      <option value="wald">Wald (pesimista)</option>
+      <option value="maximax">Maximax (optimista)</option>
+      <option value="hurwicz">Hurwicz</option>
+      <option value="savage">Savage</option>
+      <option value="valorEsperado">Valor Esperado</option>
+    </select>
+    <label id="hw-value" for="hw" style="display: none;">w: <input type="number" name="hw" id="hw" value="0.5" min="0" max="1" step="0.1"></label>
+    <button onclick="resolver()">Resolver</button>
+  </section>
+  
+  <section>
+    <h3>Resultado</h3>
+    <div id="resultado"></div>
+  </section>
+
 </body>
 </html>

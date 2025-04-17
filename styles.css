@@ -1,11 +1,12 @@
 body { 
-    font-family: sans-serif; padding: 1em; 
+    font-family: "Inter", sans-serif; 
+    padding: 1em; 
 }
 
 input { 
-    width: 60px;
+    width: 4rem;
 }
 
-table { 
-    /* border: 1px solid black; border-collapse: collapse; padding: 5px;  */
+section {
+    margin-top: 2rem;
 }
