@@ -3,10 +3,54 @@ body {
     padding: 1em; 
 }
 
+h1 {
+    margin: 0;
+} 
+
+h2, h3, h4, h5 {
+    margin: 2rem 0 0.5rem 0;
+}
+
 input { 
     width: 4rem;
 }
 
+input[type="radio"] {
+    width: auto;
+}
+
+.radio {
+    cursor: pointer;
+}
+
 section {
     margin-top: 2rem;
+    margin-right: 2rem;
+}
+
+.sect-variables > div{
+    display: flex;
+    flex-direction: column;
+}
+
+.no-overflow{
+    overflow-x: auto;
+    max-width: 100%;
+    overflow-y: auto;
+    max-height: 90vh;
+}
+
+.tabla-arrepentimientos {
+    border-collapse: collapse;
+    overflow-x: auto;
+    max-width: 100%;
+    overflow-y: auto;
+    max-height: 90vh;
+}
+
+.tabla-arrepentimientos td {
+    border: 1px solid black;
+    width: 2rem;
+    height: 2rem;
+    text-align: center;
 }
