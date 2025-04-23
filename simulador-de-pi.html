@@ -3,22 +3,22 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Teoría de la Decisión</title>
+  <title>Simulador de PI</title>
   <link rel="stylesheet" href="styles.css">
-  <script src="app.js" defer></script>
+  <script src="simulador-de-pi.js" defer></script>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap" rel="stylesheet">
 </head>
 <body>
-  <h1>MSTD 2025</h1>
-  <p><u>Por: Matias Herrneder</u><p>
-  <nav>
-    <ul>
-      <li><a href="teoria-de-la-decision.html">Teoria de la Decisión</a></li>
-      <li><a href="simulador-de-pi.html">Simulador de PI</a></li>
-    </ul>
-  </nav>
-  <p>Selecciona una página para navegar.</p>
+  <h1>Simulador de PI</h1>
+  <section>
+    <label>Cantidad de iteraciones: <input type="number" id="iterations" value="10" min="1" max="100000"></label>
+    <button onclick="buttonClick()">Simular</button>
+  </section>
+  <section>
+    <h2>Resultado:</h2>
+    <div id="resultado"></div>
+  </section>
 </body>
 </html>

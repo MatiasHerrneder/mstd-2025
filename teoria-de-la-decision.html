@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Teoría de la Decisión</title>
+  <link rel="stylesheet" href="styles.css">
+  <script src="teoria-de-la-decision.js" defer></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap" rel="stylesheet">
+</head>
+<body>
+  <h1>Teoría de la Decisión</h1>
+  <section class="sect-variables">
+    <h2>Variables:</h2>
+    <div style="display: inline-flex;">
+      <label>Acciones: <input type="number" id="rows" value="2" min="1" onchange="generarMatriz()"></label>
+      <label>Estados de la naturaleza: <input type="number" id="cols" value="2" min="1" onchange="generarMatriz()"></label>
+      <label class="radio"><input type="radio" name="tipoMatriz" value="beneficio" checked onchange="cambiarTipoMatriz()"> Matriz de Beneficios</label>
+      <label class="radio"><input type="radio" name="tipoMatriz" value="costo" onchange="cambiarTipoMatriz()"> Matriz de Costos</label>
+    </div>
+  </section>
+
+  <section>
+    <h2 id="matrizName">Matriz de beneficios:</h2>
+    <div id="matrizContainer" class="no-overflow"></div>
+  </section>
+
+  <section>
+    <h2>Criterio:</h2>
+    <select id="criterio" onchange="cambiarCriterio(this)">
+      <option value="wald">Wald (pesimista)</option>
+      <option value="maximax">Maximax (optimista)</option>
+      <option value="hurwicz">Hurwicz</option>
+      <option value="savage">Savage</option>
+      <option value="valorEsperado">Valor Esperado</option>
+    </select>
+    <label id="hw-value" for="hw" style="display: none;">w: <input type="number" name="hw" id="hw" value="0.5" min="0" max="1" step="0.1"></label>
+    <button onclick="resolver()">Resolver</button>
+  </section>
+  
+  <section>
+    <h2>Resultado:</h2>
+    <div id="resultado"></div>
+  </section>
+
+</body>
+</html>
