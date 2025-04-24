@@ -1,7 +1,7 @@
 # mstd-2025
 Trabajitos para la materia Modelos, Simulación y Teoría de la Decision
 
-## Teoria de la decision:
+## Criterios de decisión:
 * Toma de decisiones en incertidumbre según criterios de:
   * Wald
   * Maximax
@@ -11,3 +11,6 @@ Trabajitos para la materia Modelos, Simulación y Teoría de la Decision
   * Calculo de valor esperado
   * VEIP
   * BEIP 
+
+## Simuladores:
+* Simulador del número PI
