@@ -24,11 +24,12 @@
   <main>
     <h1>Simulador de PI</h1>
     <section>
-      <label>Cantidad de iteraciones: <input type="number" id="iterations" value="10" min="1" max="1000000" onkeyup=enforceMinMax(this)></label>
+      <label>Cantidad de iteraciones: <input type="number" id="iterations" value="10" min="1" max="100000" onkeyup=enforceMinMax(this)></label>
       <button onclick="buttonClick()">Simular</button>
     </section>
     <section>
       <h2>Resultado:</h2>
+      <canvas id="canvas" width="300rem" height="300rem" style="border:1px solid #000;"></canvas>
       <div id="resultado"></div>
     </section>
   </main>
