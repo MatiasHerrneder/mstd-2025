@@ -29,35 +29,37 @@
         <p>Se desea saber el resultado económico de una campaña de venta de rifas de los bomberos que se hace puerta a puerta; para ello se realiza un estudio de simulación en base a información muestral obtenida de campañas anteriores.</p>
         <p>El número máximo de rifas que puede comprar una persona que es visitada por el vendedor es de 4, pero la probabilidad varía si el que compra es hombre o mujer.</p>
         <p>La distribución de probabilidad del número de rifas según el sexo del comprador es la siguiente:</p>
-        <table>
-            <tr>
-                <th></th>
-                <th colspan="4">Mujeres</th>
-                <th colspan="4">Hombres</th>
-            </tr>
-            <tr>
-                <th>Nro. Rifas</th>
-                <th>1</th>
-                <th>2</th>
-                <th>3</th>
-                <th>4</th>
-                <th>1</th>
-                <th>2</th>
-                <th>3</th>
-                <th>4</th>
-            </tr>
-            <tr>
-                <th>P()</th>
-                <td>0,6</td>
-                <td>0,3</td>
-                <td>0,1</td>
-                <td>0</td>
-                <td>0,1</td>
-                <td>0,4</td>
-                <td>0,3</td>
-                <td>0,2</td>
-            </tr>
-        </table>
+        <div class="no-overflow">
+            <table>
+                <tr>
+                    <th></th>
+                    <th colspan="4">Mujeres</th>
+                    <th colspan="4">Hombres</th>
+                </tr>
+                <tr>
+                    <th>Nro. Rifas</th>
+                    <th>1</th>
+                    <th>2</th>
+                    <th>3</th>
+                    <th>4</th>
+                    <th>1</th>
+                    <th>2</th>
+                    <th>3</th>
+                    <th>4</th>
+                </tr>
+                <tr>
+                    <th>P()</th>
+                    <td>0,6</td>
+                    <td>0,3</td>
+                    <td>0,1</td>
+                    <td>0</td>
+                    <td>0,1</td>
+                    <td>0,4</td>
+                    <td>0,3</td>
+                    <td>0,2</td>
+                </tr>
+            </table>
+        </div>
         <p>Cuando el vendedor visita a los clientes establecidos, en un 60% de los casos no hay nadie o no es atendido. En esos casos se planea una segunda visita dentro de la semana siguiente a la primera.</p>
         <p>Cuando es atendido, un 80% de las veces abre un hombre y un 20% una mujer. Cuando abre un hombre un 25% de las veces se consigue la venta</p>
         <p>Cuando atiende una mujer solamente el 15% se consigue la venta.</p>
@@ -67,6 +69,23 @@
     </section>
     <section>
         <h2>Resolución</h2>
+        <fieldset>
+            <legend>Beneficio con 1000 visitas y $2000 de ganancia por venta</legend>
+            <button onclick="simular1()">Simular</button>
+        </fieldset>
+        <fieldset>
+            <legend>Beneficio con 2000 visitas y $1900 de ganancia por venta</legend>
+            <button onclick="simular2()">Simular</button>
+        </fieldset>
+        <fieldset>
+            <label>Cantidad de visitas: <input type="number" id="visitas" value="10" min="1" max="100000" onkeyup=enforceMinMax(this)></label>
+            <label>Ganancia por venta: <input type="number" id="ganancia" value="10" min="1" max="100000" onkeyup=enforceMinMax(this)></label>
+            <button onclick="simularN()">Simular</button>
+        </fieldset>
+    </section>
+    <section>
+        <h2>Resultado:</h2>
+        <div id="resultado"></div>
     </section>
   </main>
 </body>

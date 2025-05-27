@@ -36,6 +36,10 @@ input[type="radio"] {
     width: auto;
 }
 
+td {
+    padding: 0 0.8rem;
+}
+
 .radio {
     cursor: pointer;
 }
@@ -70,4 +74,5 @@ section {
     width: 2rem;
     height: 2rem;
     text-align: center;
+    padding: 0;
 }
