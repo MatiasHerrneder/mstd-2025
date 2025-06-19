@@ -54,7 +54,7 @@ async function simular(visitas, ganancia) {
             }
         }
         mostrarProgreso(i, beneficio)
-        await sleep(5)
+        await sleep(3000 / visitas)
     }
 }
 
