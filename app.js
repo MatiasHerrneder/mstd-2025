@@ -10,6 +10,6 @@ function enforceMinMax(el) {
 }
 
 function sleep(ms) {
-  return new Promise(resolve => setTimeout(resolve, ms));
   console.log('sleep')
+  return new Promise(resolve => setTimeout(resolve, ms));
 }
