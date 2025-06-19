@@ -8,3 +8,7 @@ function enforceMinMax(el) {
     }
   }
 }
+
+function sleep(ms) {
+    return new Promise(resolve => setTimeout(resolve, ms));
+}
