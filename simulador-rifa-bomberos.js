@@ -53,7 +53,7 @@ function simular(visitas, ganancia) {
             }
         }
         mostrarProgreso(i, beneficio)
-        sleep(200)
+        sleep(2000)
     }
 }
 
@@ -62,5 +62,5 @@ function mostrarResultados() {
 }
 
 function mostrarProgreso(iteraciones, beneficio) {
-    resParametros.innerText = `Beneficio: ${beneficio}, con ${iteraciones} iteraciones`
+    resResultados.innerText = `Beneficio: ${beneficio.toFixed(2)}, con ${iteraciones + 1} iteraciones`
 }
