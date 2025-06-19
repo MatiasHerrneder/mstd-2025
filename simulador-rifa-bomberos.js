@@ -24,7 +24,7 @@ async function simular(visitas, ganancia) {
     const CANT_RIFAS_MUJER = [0.6, 0.3, 0.1, 0]
 
     let beneficio = 0
-    mostrarResultados()
+    mostrarResultados(visitas, ganancia)
 
     // PASO 4: iterar
     for (i = 0; i < visitas; i++) {
@@ -57,8 +57,8 @@ async function simular(visitas, ganancia) {
     }
 }
 
-function mostrarResultados() {
-    resParametros.innerText = `Visitas: ${parseInt(visitas.value)}, ganancia por venta: ${parseInt(ganancia.value)}`
+function mostrarResultados(visitas, ganancia) {
+    resParametros.innerText = `Visitas: ${visitas}, ganancia por venta: ${ganancia}`
 }
 
 function mostrarProgreso(iteraciones, beneficio) {
