@@ -46,20 +46,19 @@ async function simular(visitas, ganancia) {
         let randCantRifas = Math.random()
 
         // PASO 2: lo convierto en entrada valida para el sistema
-        indexCantRifas = Math.floor(randCantRifas * 4)
-            // los demas ya son entradas validas, Math.random() devuelve un numero del intervalo [0, 1),
+            // los numeros ya son entradas validas, Math.random() devuelve un numero del intervalo [0, 1),
             // al tratarse de probabilidades los calculos que haremos, es justamente lo que necesitamos
 
         // PASO 3: lo opero
         if (randEsAtendido < ES_ATENDIDO) { // es atendido
             if (randAbreUnHombre < ABRE_UN_HOMBRE) { // atiende un hombre
                 if (randVenta < VENTA_HOMBRE) { // el hombre compra
-                    beneficio += CANT_RIFAS_HOMBRE[indexCantRifas] * ganancia
+                    beneficio += CANT_RIFAS_HOMBRE[obtenerIndicePorProbabilidad(CANT_RIFAS_HOMBRE, randCantRifas)] * beneficio
                 }
             }
             else { // atiende una mujer
                 if (randVenta < VENTA_MUJER) { // la mujer compra
-                    beneficio += CANT_RIFAS_MUJER[indexCantRifas] * ganancia
+                    beneficio += CANT_RIFAS_MUJER[obtenerIndicePorProbabilidad(CANT_RIFAS_MUJER, randCantRifas)] * beneficio
                 }
             }
         }
@@ -73,6 +72,19 @@ async function simular(visitas, ganancia) {
     }
     simulacionEncurso = false
 }
+
+function obtenerIndicePorProbabilidad(probabilidades, numeroAleatorio) {
+    let acumulado = 0;
+    for (let i = 0; i < probabilidades.length; i++) {
+        acumulado += probabilidades[i];
+        if (numeroAleatorio < acumulado) {
+            return i;
+        }
+        }
+    // Por seguridad, si el númeroAleatorio es muy cercano a 1 y hay redondeo
+    return probabilidades.length - 1;
+}
+
 
 function mostrarParametros(visitas, ganancia) {
     resParametros.innerText = `Visitas: ${visitas}, ganancia por venta: $${ganancia}`
