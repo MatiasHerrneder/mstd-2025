@@ -1,5 +1,7 @@
 const resParametros = document.getElementById("resultado-parametros")
 const resResultados = document.getElementById("resultado-resultados")
+const visitas = document.getElementById("visitas")
+const ganancia = document.getElementById("ganancia")
 
 function simular1(){
     simular(1000, 2000)
@@ -10,12 +12,10 @@ function simular2() {
 }
 
 function simularN() {
-    const visitas = parseInt(document.getElementById("visitas").value)
-    const ganancia = parseInt(document.getElementById("ganancia").value)
-    simular(visitas, ganancia)
+    simular(parseInt(visitas.value), parseInt(ganancia.value))
 }
 
-function simular(visitas, ganancia) {
+async function simular(visitas, ganancia) {
     const ES_ATENDIDO = 0.6
     const ABRE_UN_HOMBRE = 0.8
     const VENTA_HOMBRE = 0.25
@@ -53,12 +53,12 @@ function simular(visitas, ganancia) {
             }
         }
         mostrarProgreso(i, beneficio)
-        sleep(2000)
+        await sleep(5)
     }
 }
 
 function mostrarResultados() {
-    resParametros.innerText = `Visitas: ${visitas}, ganancia por venta: ${ganancia}`
+    resParametros.innerText = `Visitas: ${parseInt(visitas.value)}, ganancia por venta: ${parseInt(ganancia.value)}`
 }
 
 function mostrarProgreso(iteraciones, beneficio) {
