@@ -1,5 +1,6 @@
 const resParametros = document.getElementById("resultado-parametros")
-const resResultados = document.getElementById("resultado-resultados")
+const resBeneficio = document.getElementById("resultado-beneficio")
+const resVisitas = document.getElementById("resultado-visitas")
 const visitas = document.getElementById("visitas")
 const ganancia = document.getElementById("ganancia")
 
@@ -58,9 +59,10 @@ async function simular(visitas, ganancia) {
 }
 
 function mostrarResultados(visitas, ganancia) {
-    resParametros.innerText = `Visitas: ${visitas}, ganancia por venta: ${ganancia}`
+    resParametros.innerText = `Visitas: ${visitas}, ganancia por venta: $${ganancia}`
 }
 
 function mostrarProgreso(iteraciones, beneficio) {
-    resResultados.innerText = `Beneficio: ${beneficio.toFixed(2)}, con ${iteraciones + 1} iteraciones`
+    resBeneficio.innerText = `Beneficio: $${beneficio.toFixed(2)}`
+    resVisitas.innerText = `Visitas: ${iteraciones + 1}`
 }
