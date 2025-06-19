@@ -4,19 +4,27 @@ const resVisitas = document.getElementById("resultado-visitas")
 const visitas = document.getElementById("visitas")
 const ganancia = document.getElementById("ganancia")
 
+let cancelarSimulacion = false
+
 function simular1(){
-    simular(1000, 2000)
+    iniciarSimulacion(1000, 2000)
 }
 
 function simular2() {
-    simular(2000, 1900)
+    iniciarSimulacion(2000, 1900)
 }
 
 function simularN() {
-    simular(parseInt(visitas.value), parseInt(ganancia.value))
+    iniciarSimulacion(parseInt(visitas.value), parseInt(ganancia.value))
+}
+
+function iniciarSimulacion(visitas, ganancia) {
+    cancelarSimulacion = true
+    setTimeout(() => simular(visitas, ganancia), 0)
 }
 
 async function simular(visitas, ganancia) {
+    cancelarSimulacion = false
     const ES_ATENDIDO = 0.6
     const ABRE_UN_HOMBRE = 0.8
     const VENTA_HOMBRE = 0.25
@@ -29,6 +37,7 @@ async function simular(visitas, ganancia) {
 
     // PASO 4: iterar
     for (i = 0; i < visitas; i++) {
+        if (cancelarSimulacion) return
         // PASO 1: genero numeros aleatorios
         let randEsAtendido = Math.random()
         let randAbreUnHombre = Math.random()
