@@ -53,12 +53,12 @@ async function simular(visitas, ganancia) {
         if (randEsAtendido < ES_ATENDIDO) { // es atendido
             if (randAbreUnHombre < ABRE_UN_HOMBRE) { // atiende un hombre
                 if (randVenta < VENTA_HOMBRE) { // el hombre compra
-                    beneficio += CANT_RIFAS_HOMBRE[obtenerIndicePorProbabilidad(CANT_RIFAS_HOMBRE, randCantRifas)] * beneficio
+                    beneficio += CANT_RIFAS_HOMBRE[obtenerIndicePorProbabilidad(CANT_RIFAS_HOMBRE, randCantRifas)] * ganancia
                 }
             }
             else { // atiende una mujer
                 if (randVenta < VENTA_MUJER) { // la mujer compra
-                    beneficio += CANT_RIFAS_MUJER[obtenerIndicePorProbabilidad(CANT_RIFAS_MUJER, randCantRifas)] * beneficio
+                    beneficio += CANT_RIFAS_MUJER[obtenerIndicePorProbabilidad(CANT_RIFAS_MUJER, randCantRifas)] * ganancia
                 }
             }
         }
