@@ -4,27 +4,26 @@ const resVisitas = document.getElementById("resultado-visitas")
 const visitas = document.getElementById("visitas")
 const ganancia = document.getElementById("ganancia")
 
-let cancelarSimulacion = false
+let simulacionEncurso = false
 
 function simular1(){
-    iniciarSimulacion(1000, 2000)
+    simular(1000, 2000)
 }
 
 function simular2() {
-    iniciarSimulacion(2000, 1900)
+    simular(2000, 1900)
 }
 
 function simularN() {
-    iniciarSimulacion(parseInt(visitas.value), parseInt(ganancia.value))
-}
-
-function iniciarSimulacion(visitas, ganancia) {
-    cancelarSimulacion = true
-    setTimeout(() => simular(visitas, ganancia), 0)
+    simular(parseInt(visitas.value), parseInt(ganancia.value))
 }
 
 async function simular(visitas, ganancia) {
-    cancelarSimulacion = false
+    if (simulacionEncurso) {
+        alert("Hay una simulacion en curso")
+        return
+    }
+    simulacionEncurso = true
     const ES_ATENDIDO = 0.6
     const ABRE_UN_HOMBRE = 0.8
     const VENTA_HOMBRE = 0.25
@@ -33,11 +32,13 @@ async function simular(visitas, ganancia) {
     const CANT_RIFAS_MUJER = [0.6, 0.3, 0.1, 0]
 
     let beneficio = 0
-    mostrarResultados(visitas, ganancia)
+    mostrarParametros(visitas, ganancia)
+
+    const duracionTotal = 3000
+    const tiempoInicio = performance.now()
 
     // PASO 4: iterar
     for (i = 0; i < visitas; i++) {
-        if (cancelarSimulacion) return
         // PASO 1: genero numeros aleatorios
         let randEsAtendido = Math.random()
         let randAbreUnHombre = Math.random()
@@ -53,25 +54,31 @@ async function simular(visitas, ganancia) {
         if (randEsAtendido < ES_ATENDIDO) { // es atendido
             if (randAbreUnHombre < ABRE_UN_HOMBRE) { // atiende un hombre
                 if (randVenta < VENTA_HOMBRE) { // el hombre compra
-                    beneficio += CANT_RIFAS_HOMBRE[indexCantRifas]
+                    beneficio += CANT_RIFAS_HOMBRE[indexCantRifas] * ganancia
                 }
             }
             else { // atiende una mujer
                 if (randVenta < VENTA_MUJER) { // la mujer compra
-                    beneficio += CANT_RIFAS_MUJER[indexCantRifas]
+                    beneficio += CANT_RIFAS_MUJER[indexCantRifas] * ganancia
                 }
             }
         }
         mostrarProgreso(i, beneficio)
-        await sleep(3000 / visitas)
+        let tiempoEsperado = tiempoInicio + ((i + 1) * duracionTotal / visitas)
+        let tiempoActual = performance.now()
+        let tiempoRestante = tiempoEsperado - tiempoActual
+        if (tiempoRestante > 0) {
+            await sleep(tiempoRestante)
+        }
     }
+    simulacionEncurso = false
 }
 
-function mostrarResultados(visitas, ganancia) {
+function mostrarParametros(visitas, ganancia) {
     resParametros.innerText = `Visitas: ${visitas}, ganancia por venta: $${ganancia}`
 }
 
 function mostrarProgreso(iteraciones, beneficio) {
-    resBeneficio.innerText = `Beneficio: $${beneficio.toFixed(2)}`
+    resBeneficio.innerText = `Beneficio: $${beneficio.toLocaleString('es-AR', { maximumFractionDigits: 0 })}`;
     resVisitas.innerText = `Visitas: ${iteraciones + 1}`
 }
