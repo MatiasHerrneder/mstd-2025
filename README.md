@@ -14,3 +14,5 @@ Trabajitos para la materia Modelos, Simulación y Teoría de la Decision
 
 ## Simuladores:
 * Simulador del número PI
+
+* Simulador del problema "La rifa de los bomberos"
