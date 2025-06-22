@@ -1,82 +1,210 @@
-body { 
-    font-family: "Inter", sans-serif; 
-    padding: 1em; 
+/* Tipografía general */
+body {
+  margin: 0;
+  padding: 0;
+  font-family: 'Inter', sans-serif;
+  background-color: #fdfdfd;
+  color: #333;
+  line-height: 1.6;
+  font-size: 16px;
+}
+
+/* Cabecera */
+header {
+  background-color: #2c3e50;
+  padding: 1rem 2rem;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
 header nav {
-    border-bottom: 1px solid black;
-    padding-bottom: 1rem;
-}
-  
-header li {
-    float: left;
-}
-  
-header li a {
-    display: block;
-    margin-right: 2rem;
+    max-width: 900px;
+    margin: 0 auto;
 }
 
-header ul {
-    list-style-type: none;
-    margin: 0;
-    padding: 0;
-    overflow: hidden;
+header nav ul {
+  display: flex;
+  justify-content: flex-start;
+  flex-wrap: wrap;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  gap: 2rem;
 }
 
-h1, h2, h3, h4, h5 {
-    margin: 2rem 0 0.5rem 0;
+header nav ul li a {
+  color: #ecf0f1;
+  text-decoration: none;
+  font-weight: 500;
+  transition: color 0.2s ease;
+  padding: 0.25rem 0.5rem;
 }
 
-input { 
-    width: 4rem;
+header nav ul li a:hover {
+  color: #5dade2;
 }
 
-input[type="radio"] {
-    width: auto;
+/* Contenido principal */
+main {
+  max-width: 900px;
+  margin: 2rem auto;
+  padding: 0 1rem;
+}
+
+h1 {
+  font-size: 2rem;
+  color: #2c3e50;
+  margin-bottom: 1rem;
+}
+
+h2 {
+  font-size: 1.4rem;
+  color: #34495e;
+  margin-top: 2rem;
+  border-bottom: 2px solid #ddd;
+  padding-bottom: 0.3rem;
+}
+
+h3, h4 {
+  color: #2c3e50;
+  margin-top: 1.2rem;
+}
+
+/* Texto enriquecido */
+u {
+  text-underline-offset: 3px;
+  text-decoration-thickness: 1.5px;
+}
+
+/* Secciones */
+section {
+  margin-bottom: 2rem;
 }
 
 fieldset {
-    margin-top: 1rem;
+  border: 1px solid #ccc;
+  background-color: #fff;
+  border-radius: 6px;
+  padding: 1rem;
+  margin-top: 1rem;
 }
 
-td {
-    padding: 0 0.8rem;
+legend {
+  font-weight: bold;
+  color: #2c3e50;
+}
+
+/* Etiquetas y formularios */
+label {
+  display: block;
+  margin: 0.5rem 0;
+  font-weight: 500;
+}
+
+input[type="number"],
+select {
+  padding: 0.4rem;
+  font-size: 1rem;
+  min-width: 120px;
+  margin-left: 0.5rem;
 }
 
 .radio {
-    cursor: pointer;
+  margin-left: 1rem;
 }
 
-section {
-    margin-top: 2rem;
-    margin-right: 2rem;
+/* Botones */
+button {
+  margin-top: 0.5rem;
+  padding: 0.6rem 1.2rem;
+  background-color: #3498db;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
 }
 
-.sect-variables > div{
-    display: flex;
-    flex-direction: column;
+button:hover {
+  background-color: #2980b9;
 }
 
-.no-overflow{
-    overflow-x: auto;
-    max-width: 100%;
-    overflow-y: auto;
-    max-height: 90vh;
+/* Tablas */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+  background-color: #fff;
+  border: 1px solid #ddd;
 }
 
-.tabla-arrepentimientos {
-    border-collapse: collapse;
-    overflow-x: auto;
-    max-width: 100%;
-    overflow-y: auto;
-    max-height: 90vh;
+th, td {
+  padding: 0.75rem;
+  border: 1px solid #ddd;
+  text-align: center;
 }
 
-.tabla-arrepentimientos td {
-    border: 1px solid black;
-    width: 2rem;
-    height: 2rem;
-    text-align: center;
-    padding: 0;
+th {
+  background-color: #ecf0f1;
+  font-weight: 600;
+}
+
+.no-overflow {
+  overflow-x: auto;
+}
+
+/* Resultados */
+#resultado,
+#resultado-parametros,
+#ronda-1,
+#ronda-2,
+#total-rondas {
+  background-color: #fff;
+  border-left: 4px solid #3498db;
+  padding: 1rem;
+  margin-top: 1rem;
+  border-radius: 4px;
+}
+
+/* Canvas */
+canvas {
+  display: block;
+  margin: 1rem auto;
+  max-width: 100%;
+  height: auto;
+  border: 1px solid #ccc;
+}
+
+/* Navegación interna de home */
+main > nav ul {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  margin-top: 1rem;
+  padding-left: 1rem;
+}
+
+main > nav ul li a {
+  color: #2980b9;
+  font-weight: 500;
+  text-decoration: none;
+}
+
+main > nav ul li a:hover {
+  text-decoration: underline;
+}
+
+/* Responsive */
+@media (max-width: 600px) {
+  input[type="number"],
+  select {
+    width: 100%;
+    box-sizing: border-box;
+    margin-left: 0;
+  }
+
+  fieldset {
+    padding: 0.75rem;
+  }
 }
